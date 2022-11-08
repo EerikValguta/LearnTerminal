@@ -1,39 +1,50 @@
 function write (string){
     process.stdout.write(string);
 }
-write('hello\n');
-write('\x1B[1m'); write('hello\n'); write('\x1B[0m');  write('\n');
+import chalk from 'chalk';
+import boxen from 'boxen';
 
-write('\x1B[2m'); write('hello\n'); write('\x1B[0m');  write('\n');
+write(chalk.blue.bgGreen('Hello chalk'));
 
-write('\x1B[3m'); write('hello\n'); write('\x1B[0m');  write('\n');
-
-write('\x1B[4m'); write('hello\n'); write('\x1B[0m');  write('\n');
-
-write('\x1B[5m'); write('hello\n'); write('\x1B[0m');  write('\n');
-write('\x1B[6m'); write('hello\n'); write('\x1B[0m');  write('\n');
-write('\x1B[7m'); write('hello\n'); write('\x1B[0m');  write('\n');
-write('\x1B[8m'); write('hello\n'); write('\x1B[0m');  write('\n');
-
-for(let i=30; i<40; i++){
-    if(i==38) continue;
-    write('\x1B[1;'+i+'m');write('color code number'+ i);write('\x1B[0m'); write('\n')
+for(let i=0; i<16; i++){
+    for(let j=0; j<16; j++){
+        let color = (i*j).toString()
+        write(chalk.ansi256(color)(color.padEnd(4,' ')));
+    }
+    write('\n');
 }
 
-for(let i=30; i<40; i++){
-    write('\x1B[1;'+i+'m');write('color code number'+ i);write('\x1B[0m'); write('\n')
-}
+write(boxen(chalk.green.bgRed.underline('Boxy 1'), {
+    padding: 2,
+    margin: 1,
+    title: 'Tiitel',
+    titleAlignment:'center'
+}));
 
-for(let i=30; i<50; i++){
-    if(i==48) continue;
-    write('\x1B[2;'+i+'m');write('color code number'+ i);write('\x1B[0m'); write('\n')
-}
+write(boxen(chalk.white.bgBlack.italic('Boxy 2'), {
+    padding: 3,
+    margin: 2,
+    borderStyle:'double',
+}));
 
-console.clear();
-let date = new Date().toString();
-write(date)
-setInterval(()=>{
-    write('\x1B['+ date.lenght + 'D');
-    date=new Date().toString();
-    write(date);
-},1);
+write(boxen(chalk.red.bgBlack.bold('Boxy 3'), {
+    padding: 2,
+    margin: 3,
+    title: 'tiitel 2',
+    titleAlignment:'left'
+}));
+
+write(boxen(chalk.magenta.bgGray.dim('Boxy 4'), {
+    padding: 1,
+    margin: 2
+}));
+
+write(boxen(chalk.white.bgCyan.strikethrough('Boxy 5'), {
+    padding: 1,
+    margin: 3
+}));
+
+write(boxen(chalk.blue.bgGreen.overline('Boxy 6'), {
+    padding: 1,
+    margin: 3
+}));
