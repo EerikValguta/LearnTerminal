@@ -1,19 +1,26 @@
 import inquirer from 'inquirer';
 inquirer
-    .prompt([ 
-        {typer:'input',name:'age',message:'How old are you?'},
-        {typer:'input',name:'height',message:'How tall are you?'},
-        {typer:'input',name:'music',message:'What music do you like?'},
-        {typer:'input',name:'nr',message:'What is your number?'},
-        {typer:'input',name:'home',message:'Where do you live?'},
-        {typer:'input',name:'bug',message:'What color is your bugatti?'},
+    .prompt([
+        {type: 'number', name: 'age', message: 'How old are you?'},
+        {type: 'input', name: 'name', message: 'What is your name?'},
+        {type: 'confirm', name: 'confirm', message: 'Are you at least 18 years old?'},
+        {type: 'list', name: 'list', message:'How many sibilings do you have?', choices:["0", "1", "2"]},
+        {type: 'rawlist', name: 'raw', message: 'What is your favorite color?', choices:["blue", "black", "red", "white", "orange", "yellow", "green", "purple"]},
+        {type: 'expand', name: 'expand', message: 'Do you like soda?', choices:[{key:"y", value:"Yes"}, {key:"n", value:"No"}]},
+        {type: 'checkbox', name: 'checkbox', message: 'Are you right or left handed?', choices:["Right", "Left"]},
+        {type: 'password', name: 'pass', message: 'Insert your password'},
+        {type: 'editor', name: 'editor', message: 'Can you write me something'},
     ])
-    .then((answers)=>{
-        console.log(`You are ${answers.age}years old`);
-        console.log(`You are  ${answers.height} cm tall`);
-        console.log(`I like ${answers.music} too`);
-        console.log(`Your number is ${answers.nr} correct?`);
-        console.log(`So you live in ${answers.home} right?`);
-        console.log(`So you own a bugatti ${answers.bug} correct?`);
-    })
+    .then((answers) => {
+        console.log(`I am ${answers.age} years old`);
+        console.log(`My name is ${answers.name} `);
+        console.log(`${answers.confirm} `);
+        console.log(`I am working ${answers.list} jobs`);
+        console.log(`My favorite color is ${answers.raw} `);
+        console.log(`${answers.expand}, i like dogs`);
+        console.log(`My day is ${answers.checkbox} `);
+        console.log(`My password is ${answers.pass} `);
+        console.log(`My funny word is ${answers.editor} `);
 
+
+});
