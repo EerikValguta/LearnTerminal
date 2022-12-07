@@ -12,15 +12,15 @@ inquirer
         {type: 'editor', name: 'editor', message: 'Can you write me something'},
     ])
     .then((answers) => {
-        console.log(`I am ${answers.age} years old`);
-        console.log(`My name is ${answers.name} `);
+        console.log(`You are ${answers.age} years old`);
+        console.log(`Your name is ${answers.name} `);
         console.log(`${answers.confirm} `);
-        console.log(`I am working ${answers.list} jobs`);
+        console.log(`I have ${answers.list} sibilings`);
         console.log(`My favorite color is ${answers.raw} `);
-        console.log(`${answers.expand}, i like dogs`);
-        console.log(`My day is ${answers.checkbox} `);
-        console.log(`My password is ${answers.pass} `);
-        console.log(`My funny word is ${answers.editor} `);
+        console.log(`${answers.expand}, i like soda`);
+        console.log(`You are ${answers.checkbox} handed `);
+        console.log(`Your password is ${answers.pass} `);
+        console.log(`You wrote ${answers.editor} `);
 
 
 });
